@@ -183,15 +183,13 @@ class _MainPageState extends State<MainFeedPage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => AddFeedPage(
-                  currentUserId: widget.currentUserId,
-                ),
-              ),
-            );
-          },
-          child: Icon(Icons.add),
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddFeedPage(
+                      currentUserId: widget.currentUserId,
+                    )));
+          },child: Icon(Icons.add), // Icon for the button
         ),
         body:  ListView(
           physics: BouncingScrollPhysics(
@@ -207,3 +205,4 @@ class _MainPageState extends State<MainFeedPage> {
     );
   }
 }
+
