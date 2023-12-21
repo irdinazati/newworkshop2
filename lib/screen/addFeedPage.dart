@@ -29,12 +29,22 @@ class _AddFeedPageState extends State<AddFeedPage> {
 
   // Function to handle logout
   void _logout() {
-    // Navigate to the login screen
     Navigator.pushReplacementNamed(context, '/login');
-
-    // Clear user data - You can use your method to clear user data here
-    //_clearUserData();
+    _clearUserData(); // Call your method to clear user data here
   }
+  void _clearUserData() {
+    // Implement code to clear user-related data based on currentUserId
+    // For example:
+    // Clearing user-specific tokens
+    // AuthService.clearUserTokens(currentUserId);
+
+    // Clearing cached data for that user
+    // CacheService.clearUserData(currentUserId);
+
+    // Resetting preferences for that user
+    // PreferencesService.resetUserPreferences(currentUserId);
+  }
+
 
 
   Future<void> handleImageFromGallery() async {

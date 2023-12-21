@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:workshopnew/screen/mainFeedPage.dart';
 import 'package:workshopnew/screen/menu.dart';
 import 'firebase_options.dart';
 import 'screen/homePage.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasData) {
-            return Menu (currentUserId: snapshot.data!.uid);
+            return MainFeedPage (currentUserId: snapshot.data!.uid);
           } else {
             return HomePage();
           }
