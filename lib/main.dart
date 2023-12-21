@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:workshopnew/screen/mainFeedPage.dart';
 import 'package:workshopnew/screen/menu.dart';
+import 'auth/authenticationService.dart';
 import 'firebase_options.dart';
 import 'screen/homePage.dart';
+import 'package:provider/provider.dart'; // Import the provider package
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +22,12 @@ void main() async {
     androidProvider: AndroidProvider.playIntegrity,
   );
 
-
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AuthenticationService(FirebaseAuth.instance),
+      child: MyApp(),
+    ),
+  );
 }
 class MyApp extends StatelessWidget {
   MyApp({super.key});

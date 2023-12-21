@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:workshopnew/auth/authenticationService.dart';
 import '../constants/constants.dart';
 import '../model/feedModel.dart';
 import '../model/usermodel.dart';
@@ -7,7 +8,7 @@ import '../services/databaseServices.dart';
 import '../widget/feedContainer.dart';
 import 'addFeedPage.dart';
 import 'settingPage.dart';
-
+import 'package:provider/provider.dart';
 class MainFeedPage extends StatefulWidget {
   final String currentUserId;
 
@@ -63,6 +64,8 @@ class _MainPageState extends State<MainFeedPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final authService = Provider.of<AuthenticationService>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -169,19 +172,18 @@ class _MainPageState extends State<MainFeedPage> {
             Divider(thickness: 1, color: Colors.grey),
 
             // Logout option
-            ListTile(
-              title: Text(
-                'Logout',
-                style: TextStyle(
-                  color: Colors.green[300], // Change the color for emphasis
-                  fontWeight: FontWeight.bold, // Bold text for emphasis
-                ),
-              ),
-              onTap: () {
-                _logout();
-              },
-            ),
-          ],
+      ListTile(
+        title: Text(
+          'Logout',
+          style: TextStyle(
+            color: Colors.green[300],
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        onTap: () {
+          authService.signOut();
+        },
+)         ],
         ),
       ),
       backgroundColor: Colors.white,
